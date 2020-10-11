@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2DBFB39E2531D48600F05EB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBFB39D2531D48600F05EB2 /* AppDelegate.swift */; };
+		2DBFB3A02531D48600F05EB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBFB39F2531D48600F05EB2 /* SceneDelegate.swift */; };
+		2DBFB3A22531D48600F05EB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBFB3A12531D48600F05EB2 /* ContentView.swift */; };
+		2DBFB3A42531D48600F05EB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBFB3A32531D48600F05EB2 /* Assets.xcassets */; };
+		2DBFB3A72531D48600F05EB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBFB3A62531D48600F05EB2 /* Preview Assets.xcassets */; };
+		2DBFB3AA2531D48600F05EB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBFB3A82531D48600F05EB2 /* LaunchScreen.storyboard */; };
+		2DBFB3B52531D48700F05EB2 /* DouLampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBFB3B42531D48700F05EB2 /* DouLampTests.swift */; };
+		2DBFB3C02531D48700F05EB2 /* DouLampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBFB3BF2531D48700F05EB2 /* DouLampUITests.swift */; };
+		2DBFB3E72531FAAF00F05EB2 /* BLEConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBFB3E62531FAAF00F05EB2 /* BLEConnection.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2DBFB3B12531D48600F05EB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DBFB3922531D48600F05EB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DBFB3992531D48600F05EB2;
+			remoteInfo = DouLamp;
+		};
+		2DBFB3BC2531D48700F05EB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DBFB3922531D48600F05EB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DBFB3992531D48600F05EB2;
+			remoteInfo = DouLamp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2DBFB39A2531D48600F05EB2 /* DouLamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouLamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBFB39D2531D48600F05EB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2DBFB39F2531D48600F05EB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2DBFB3A12531D48600F05EB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2DBFB3A32531D48600F05EB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2DBFB3A62531D48600F05EB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2DBFB3A92531D48600F05EB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2DBFB3AB2531D48600F05EB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DBFB3B02531D48600F05EB2 /* DouLampTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouLampTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBFB3B42531D48700F05EB2 /* DouLampTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouLampTests.swift; sourceTree = "<group>"; };
+		2DBFB3B62531D48700F05EB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DBFB3BB2531D48700F05EB2 /* DouLampUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouLampUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBFB3BF2531D48700F05EB2 /* DouLampUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouLampUITests.swift; sourceTree = "<group>"; };
+		2DBFB3C12531D48700F05EB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DBFB3E62531FAAF00F05EB2 /* BLEConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConnection.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DBFB3972531D48600F05EB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DBFB3AD2531D48600F05EB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DBFB3B82531D48700F05EB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DBFB3912531D48600F05EB2 = {
+			isa = PBXGroup;
+			children = (
+				2DBFB39C2531D48600F05EB2 /* DouLamp */,
+				2DBFB3B32531D48700F05EB2 /* DouLampTests */,
+				2DBFB3BE2531D48700F05EB2 /* DouLampUITests */,
+				2DBFB39B2531D48600F05EB2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2DBFB39B2531D48600F05EB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DBFB39A2531D48600F05EB2 /* DouLamp.app */,
+				2DBFB3B02531D48600F05EB2 /* DouLampTests.xctest */,
+				2DBFB3BB2531D48700F05EB2 /* DouLampUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DBFB39C2531D48600F05EB2 /* DouLamp */ = {
+			isa = PBXGroup;
+			children = (
+				2DBFB39D2531D48600F05EB2 /* AppDelegate.swift */,
+				2DBFB39F2531D48600F05EB2 /* SceneDelegate.swift */,
+				2DBFB3A12531D48600F05EB2 /* ContentView.swift */,
+				2DBFB3E62531FAAF00F05EB2 /* BLEConnection.swift */,
+				2DBFB3A32531D48600F05EB2 /* Assets.xcassets */,
+				2DBFB3A82531D48600F05EB2 /* LaunchScreen.storyboard */,
+				2DBFB3AB2531D48600F05EB2 /* Info.plist */,
+				2DBFB3A52531D48600F05EB2 /* Preview Content */,
+			);
+			path = DouLamp;
+			sourceTree = "<group>";
+		};
+		2DBFB3A52531D48600F05EB2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2DBFB3A62531D48600F05EB2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2DBFB3B32531D48700F05EB2 /* DouLampTests */ = {
+			isa = PBXGroup;
+			children = (
+				2DBFB3B42531D48700F05EB2 /* DouLampTests.swift */,
+				2DBFB3B62531D48700F05EB2 /* Info.plist */,
+			);
+			path = DouLampTests;
+			sourceTree = "<group>";
+		};
+		2DBFB3BE2531D48700F05EB2 /* DouLampUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2DBFB3BF2531D48700F05EB2 /* DouLampUITests.swift */,
+				2DBFB3C12531D48700F05EB2 /* Info.plist */,
+			);
+			path = DouLampUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DBFB3992531D48600F05EB2 /* DouLamp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DBFB3C42531D48700F05EB2 /* Build configuration list for PBXNativeTarget "DouLamp" */;
+			buildPhases = (
+				2DBFB3962531D48600F05EB2 /* Sources */,
+				2DBFB3972531D48600F05EB2 /* Frameworks */,
+				2DBFB3982531D48600F05EB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DouLamp;
+			productName = DouLamp;
+			productReference = 2DBFB39A2531D48600F05EB2 /* DouLamp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2DBFB3AF2531D48600F05EB2 /* DouLampTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DBFB3C72531D48700F05EB2 /* Build configuration list for PBXNativeTarget "DouLampTests" */;
+			buildPhases = (
+				2DBFB3AC2531D48600F05EB2 /* Sources */,
+				2DBFB3AD2531D48600F05EB2 /* Frameworks */,
+				2DBFB3AE2531D48600F05EB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DBFB3B22531D48600F05EB2 /* PBXTargetDependency */,
+			);
+			name = DouLampTests;
+			productName = DouLampTests;
+			productReference = 2DBFB3B02531D48600F05EB2 /* DouLampTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2DBFB3BA2531D48700F05EB2 /* DouLampUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DBFB3CA2531D48700F05EB2 /* Build configuration list for PBXNativeTarget "DouLampUITests" */;
+			buildPhases = (
+				2DBFB3B72531D48700F05EB2 /* Sources */,
+				2DBFB3B82531D48700F05EB2 /* Frameworks */,
+				2DBFB3B92531D48700F05EB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DBFB3BD2531D48700F05EB2 /* PBXTargetDependency */,
+			);
+			name = DouLampUITests;
+			productName = DouLampUITests;
+			productReference = 2DBFB3BB2531D48700F05EB2 /* DouLampUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DBFB3922531D48600F05EB2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					2DBFB3992531D48600F05EB2 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					2DBFB3AF2531D48600F05EB2 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 2DBFB3992531D48600F05EB2;
+					};
+					2DBFB3BA2531D48700F05EB2 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 2DBFB3992531D48600F05EB2;
+					};
+				};
+			};
+			buildConfigurationList = 2DBFB3952531D48600F05EB2 /* Build configuration list for PBXProject "DouLamp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2DBFB3912531D48600F05EB2;
+			productRefGroup = 2DBFB39B2531D48600F05EB2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DBFB3992531D48600F05EB2 /* DouLamp */,
+				2DBFB3AF2531D48600F05EB2 /* DouLampTests */,
+				2DBFB3BA2531D48700F05EB2 /* DouLampUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DBFB3982531D48600F05EB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DBFB3AA2531D48600F05EB2 /* LaunchScreen.storyboard in Resources */,
+				2DBFB3A72531D48600F05EB2 /* Preview Assets.xcassets in Resources */,
+				2DBFB3A42531D48600F05EB2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DBFB3AE2531D48600F05EB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DBFB3B92531D48700F05EB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DBFB3962531D48600F05EB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DBFB3E72531FAAF00F05EB2 /* BLEConnection.swift in Sources */,
+				2DBFB39E2531D48600F05EB2 /* AppDelegate.swift in Sources */,
+				2DBFB3A02531D48600F05EB2 /* SceneDelegate.swift in Sources */,
+				2DBFB3A22531D48600F05EB2 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DBFB3AC2531D48600F05EB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DBFB3B52531D48700F05EB2 /* DouLampTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DBFB3B72531D48700F05EB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DBFB3C02531D48700F05EB2 /* DouLampUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2DBFB3B22531D48600F05EB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DBFB3992531D48600F05EB2 /* DouLamp */;
+			targetProxy = 2DBFB3B12531D48600F05EB2 /* PBXContainerItemProxy */;
+		};
+		2DBFB3BD2531D48700F05EB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DBFB3992531D48600F05EB2 /* DouLamp */;
+			targetProxy = 2DBFB3BC2531D48700F05EB2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2DBFB3A82531D48600F05EB2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DBFB3A92531D48600F05EB2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2DBFB3C22531D48700F05EB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2DBFB3C32531D48700F05EB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2DBFB3C52531D48700F05EB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"DouLamp/Preview Content\"";
+				DEVELOPMENT_TEAM = T872HYBE3E;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DouLamp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codes.unwritten.DouLamp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2DBFB3C62531D48700F05EB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"DouLamp/Preview Content\"";
+				DEVELOPMENT_TEAM = T872HYBE3E;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DouLamp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codes.unwritten.DouLamp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2DBFB3C82531D48700F05EB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T872HYBE3E;
+				INFOPLIST_FILE = DouLampTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codes.unwritten.DouLampTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DouLamp.app/DouLamp";
+			};
+			name = Debug;
+		};
+		2DBFB3C92531D48700F05EB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T872HYBE3E;
+				INFOPLIST_FILE = DouLampTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codes.unwritten.DouLampTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DouLamp.app/DouLamp";
+			};
+			name = Release;
+		};
+		2DBFB3CB2531D48700F05EB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T872HYBE3E;
+				INFOPLIST_FILE = DouLampUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codes.unwritten.DouLampUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DouLamp;
+			};
+			name = Debug;
+		};
+		2DBFB3CC2531D48700F05EB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T872HYBE3E;
+				INFOPLIST_FILE = DouLampUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codes.unwritten.DouLampUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DouLamp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DBFB3952531D48600F05EB2 /* Build configuration list for PBXProject "DouLamp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DBFB3C22531D48700F05EB2 /* Debug */,
+				2DBFB3C32531D48700F05EB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DBFB3C42531D48700F05EB2 /* Build configuration list for PBXNativeTarget "DouLamp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DBFB3C52531D48700F05EB2 /* Debug */,
+				2DBFB3C62531D48700F05EB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DBFB3C72531D48700F05EB2 /* Build configuration list for PBXNativeTarget "DouLampTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DBFB3C82531D48700F05EB2 /* Debug */,
+				2DBFB3C92531D48700F05EB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DBFB3CA2531D48700F05EB2 /* Build configuration list for PBXNativeTarget "DouLampUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DBFB3CB2531D48700F05EB2 /* Debug */,
+				2DBFB3CC2531D48700F05EB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DBFB3922531D48600F05EB2 /* Project object */;
+}
