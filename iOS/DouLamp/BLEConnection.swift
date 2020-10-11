@@ -130,6 +130,7 @@ open class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelega
                 print("BLE service characteristic found")
                 peripheral.delegate = self
                 connected = true
+                peripheral.setNotifyValue(true, for: characteristic)
                 peripheral.readValue(for: characteristic)
             } else {
                 print("Characteristic not found.")

@@ -4,15 +4,19 @@
 #ifdef ARDUINO_M5Stick_C
 #include <M5StickC.h>
 #endif
+
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLE2902.h>
 #include "Grove_Motor_Driver_TB6612FNG.h"
 #include <Wire.h>
 
-#define SERVICE_UUID            "B6935877-54BA-4F86-ABD7-09A4218799DF"
-#define CHARACTERISTIC_UUID     "3CDB6EAF-EC80-4CCF-9B3E-B78EFA3B28AD"
+#define SERVICE_UUID "B6935877-54BA-4F86-ABD7-09A4218799DF"
+#define CHARACTERISTIC_UUID "3CDB6EAF-EC80-4CCF-9B3E-B78EFA3B28AD"
+#define DECOUNCING_DELAY 1000
 bool deviceConnected = false;
+
+BLECharacteristic *pCharacteristicLum = nullptr;
 
 char buf[100];
 uint8_t white = 127;
@@ -21,14 +25,16 @@ uint8_t turnedOn = 0;
 
 MotorDriver motor; // NOLINT(cert-err58-cpp)
 
+#ifdef ARDUINO_M5Stick_C
 static int line_count = 0;
-
+#endif
 template<typename T>
 void println(T c) {
 #ifdef ARDUINO_M5Stick_C
     M5.Lcd.println(c);
     line_count++;
-    if (line_count > 10) {
+    if (line_count > 10)
+    {
         M5.Lcd.fillScreen(0);
         M5.Lcd.setCursor(0, 0);
         line_count = 0;
@@ -58,6 +64,15 @@ class LampCallbacks : public BLECharacteristicCallbacks {
         pCharacteristic->setValue(std::string(reinterpret_cast<char const *>(values), 3));
     }
 
+    void onNotify(BLECharacteristic* pCharacteristic) override {
+        uint8_t values[3];
+        println("notify");
+        values[0] = white;
+        values[1] = yellow;
+        values[2] = turnedOn;
+        pCharacteristic->setValue(std::string(reinterpret_cast<char const *>(values), 3));
+    }
+
     void onWrite(BLECharacteristic *pCharacteristic) override {
         println("write");
         std::string value = pCharacteristic->getValue();
@@ -73,6 +88,7 @@ class LampCallbacks : public BLECharacteristicCallbacks {
         updateLamp();
     }
 
+public:
     static void updateLamp() {
         if (turnedOn) {
             if (white == 0) {
@@ -92,11 +108,20 @@ class LampCallbacks : public BLECharacteristicCallbacks {
     }
 };
 
+void turnOffLcd() {
+    Wire1.beginTransmission(0x34);
+    Wire1.write(0x12);
+    Wire1.write(0b01001011);  // LDO2, aka OLED_VDD, off
+    Wire1.endTransmission();
+}
+
 void setup() {
     Wire.begin();
     Serial.begin(115200);
     motor.init();
     M5.begin();
+    M5.Axp.ScreenBreath(0);
+    turnOffLcd();
 
     println("BLE start.");
 
@@ -105,12 +130,12 @@ void setup() {
     pServer->setCallbacks(new MyServerCallbacks());
     BLEService *pService = pServer->createService(SERVICE_UUID);
 
-    BLECharacteristic *pCharacteristicLum = pService->createCharacteristic(
+    pCharacteristicLum = pService->createCharacteristic(
             CHARACTERISTIC_UUID,
             BLECharacteristic::PROPERTY_READ |
             BLECharacteristic::PROPERTY_WRITE |
-            BLECharacteristic::PROPERTY_INDICATE
-    );
+            BLECharacteristic::PROPERTY_NOTIFY |
+            BLECharacteristic::PROPERTY_INDICATE);
     pCharacteristicLum->setCallbacks(new LampCallbacks);
     pCharacteristicLum->addDescriptor(new BLE2902());
 
@@ -121,5 +146,13 @@ void setup() {
 }
 
 void loop() {
+    if (M5.BtnA.wasPressed() || M5.BtnB.wasPressed()) {
+        println("Button clicked.");
+        turnedOn = (turnedOn == 0);
+        LampCallbacks::updateLamp();
+        if(pCharacteristicLum) {
+            pCharacteristicLum->notify();
+        }
+    }
     M5.update();
 }
