@@ -21,7 +21,7 @@ BLECharacteristic *pCharacteristicLum = nullptr;
 char buf[100];
 uint8_t white = 127;
 uint8_t yellow = 127;
-uint8_t turnedOn = 0;
+uint8_t turnedOn = 1;
 
 MotorDriver motor; // NOLINT(cert-err58-cpp)
 
@@ -135,6 +135,8 @@ void setup() {
     motor.init();
     M5.begin();
     turnOffLcd();
+
+    LampCallbacks::updateLamp();
 
     println("BLE start.");
 
