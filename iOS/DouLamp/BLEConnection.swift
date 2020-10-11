@@ -9,7 +9,11 @@ import CoreBluetooth
 import Foundation
 import UIKit
 
-open class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate, ObservableObject {
+protocol LampStateSink {
+    func lampStateDidChange(connected: Bool, white: UInt8, yellow: UInt8, turnedOn: Bool)
+}
+
+class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate, ObservableObject {
     public static let bleServiceUUID = CBUUID(string: "B6935877-54BA-4F86-ABD7-09A4218799DF")
     public static let bleCharacteristicUUID = CBUUID(string: "3CDB6EAF-EC80-4CCF-9B3E-B78EFA3B28AD")
 
@@ -17,13 +21,13 @@ open class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelega
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
     private var characteristic: CBCharacteristic!
-    public var connected: Bool = false
+    private var connected: Bool = false
 
-    public var white: UInt8 = 0
-    public var yellow: UInt8 = 0
-    public var turnedOn: UInt8 = 0
+    private var white: UInt8 = 0
+    private var yellow: UInt8 = 0
+    private var turnedOn: UInt8 = 0
 
-    var view: ContentView?
+    var lampStateSink: LampStateSink?
 
     // Array to contain names of BLE devices to connect to.
     // Accessable by ContentView for Rendering the SwiftUI Body on change in this array.
@@ -85,14 +89,15 @@ open class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelega
     // The handler if we do connect successfully
     public func centralManager(_: CBCentralManager, didConnect peripheral: CBPeripheral) {
         if peripheral == self.peripheral {
-            print("Connected to your BLE Board")
+            print("Connected to the lamp.")
             peripheral.discoverServices([BLEConnection.bleServiceUUID])
         }
     }
 
     public func centralManager(_: CBCentralManager, didDisconnectPeripheral _: CBPeripheral, error: Error?) {
-        print("Disconnected.")
+        print("Disconnected from the lamp.")
         connected = false
+        lampStateSink?.lampStateDidChange(connected: connected, white: white, yellow: yellow, turnedOn: turnedOn > 0)
         if error != nil {
             print("Reason: \(error!)")
         }
@@ -105,7 +110,7 @@ open class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelega
         if let services = peripheral.services {
             for service in services {
                 if service.uuid == BLEConnection.bleServiceUUID {
-                    print("BLE Service found")
+                    print("Lamp service found")
                     // Now kick off discovery of characteristics
                     peripheral.discoverCharacteristics([BLEConnection.bleCharacteristicUUID], for: service)
                     return
@@ -127,20 +132,20 @@ open class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelega
                 }
             }
             if found {
-                print("BLE service characteristic found")
+                print("Lamp characteristic found.")
                 peripheral.delegate = self
                 connected = true
                 peripheral.setNotifyValue(true, for: characteristic)
                 peripheral.readValue(for: characteristic)
             } else {
-                print("Characteristic not found.")
+                print("Lamp characteristic not found.")
             }
         }
     }
 
     public func peripheral(_: CBPeripheral, didWriteValueFor _: CBDescriptor, error: Error?) {
         if error == nil {
-            print("Lamp updated.")
+            print("Lamp state sent.")
             peripheral.readValue(for: characteristic)
         }
     }
@@ -150,8 +155,8 @@ open class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelega
         white = bytes[0]
         yellow = bytes[1]
         turnedOn = bytes[2]
-        print("Lamp state: white=\(white), yellow=\(yellow), turnedOn=\(turnedOn).")
-        view?.readLamp(white: white, yellow: yellow, turnedOn: turnedOn)
+        print("Lamp state refreshed: white=\(white), yellow=\(yellow), turnedOn=\(turnedOn).")
+        lampStateSink?.lampStateDidChange(connected: connected, white: white, yellow: yellow, turnedOn: turnedOn > 0)
     }
 
     public func updateLamp(white: UInt8, yellow: UInt8, turnedOn: UInt8) {
@@ -160,8 +165,11 @@ open class BLEConnection: NSObject, CBPeripheralDelegate, CBCentralManagerDelega
         self.turnedOn = turnedOn
 
         if connected {
+            print("Sending Lamp state: white=\(white), yellow=\(yellow), turnedOn=\(turnedOn).")
             let data = Data(bytes: [white, yellow, turnedOn], count: 3)
             peripheral.writeValue(data, for: characteristic, type: .withResponse)
+        } else {
+            print("Updating failed, lamp is not connected.")
         }
     }
 }

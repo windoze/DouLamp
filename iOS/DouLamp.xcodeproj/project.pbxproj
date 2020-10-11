@@ -103,8 +103,8 @@
 			children = (
 				2DBFB39D2531D48600F05EB2 /* AppDelegate.swift */,
 				2DBFB39F2531D48600F05EB2 /* SceneDelegate.swift */,
-				2DBFB3A12531D48600F05EB2 /* ContentView.swift */,
 				2DBFB3E62531FAAF00F05EB2 /* BLEConnection.swift */,
+				2DBFB3A12531D48600F05EB2 /* ContentView.swift */,
 				2DBFB3A32531D48600F05EB2 /* Assets.xcassets */,
 				2DBFB3A82531D48600F05EB2 /* LaunchScreen.storyboard */,
 				2DBFB3AB2531D48600F05EB2 /* Info.plist */,
