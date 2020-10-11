@@ -25,12 +25,15 @@ uint8_t turnedOn = 0;
 
 MotorDriver motor; // NOLINT(cert-err58-cpp)
 
-#ifdef ARDUINO_M5Stick_C
+// M5Atom doesn't have LCD display
+#ifdef NDEBUG
+template<typename T> void println(T c) {}
+#else
+#   ifdef ARDUINO_M5Stick_C
+// Use LCD for debugging on M5Stick-C
 static int line_count = 0;
-#endif
 template<typename T>
 void println(T c) {
-#ifdef ARDUINO_M5Stick_C
     M5.Lcd.println(c);
     line_count++;
     if (line_count > 10)
@@ -39,8 +42,14 @@ void println(T c) {
         M5.Lcd.setCursor(0, 0);
         line_count = 0;
     }
-#endif
 }
+#   else
+// Use serial for debugging on M5Atom
+template<typename T> void println(T c) {
+    Serial.println(c);
+}
+#   endif
+#endif
 
 class MyServerCallbacks : public BLEServerCallbacks {
     void onConnect(BLEServer *pServer) override {
@@ -109,18 +118,22 @@ public:
 };
 
 void turnOffLcd() {
+#if defined(ARDUINO_M5Stick_C) && defined(NDEBUG)
+    M5.Axp.ScreenBreath(0);
     Wire1.beginTransmission(0x34);
     Wire1.write(0x12);
     Wire1.write(0b01001011);  // LDO2, aka OLED_VDD, off
     Wire1.endTransmission();
+#endif
 }
 
 void setup() {
     Wire.begin();
+#ifndef NDEBUG
     Serial.begin(115200);
+#endif
     motor.init();
     M5.begin();
-    M5.Axp.ScreenBreath(0);
     turnOffLcd();
 
     println("BLE start.");
