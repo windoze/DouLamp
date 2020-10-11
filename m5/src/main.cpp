@@ -1,4 +1,9 @@
+#ifdef ARDUINO_M5Atom
+#include <M5Atom.h>
+#endif
+#ifdef ARDUINO_M5Stick_C
 #include <M5StickC.h>
+#endif
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLE2902.h>
@@ -20,7 +25,7 @@ static int line_count = 0;
 
 template<typename T>
 void println(T c) {
-#ifdef _M5STICKC_H_
+#ifdef ARDUINO_M5Stick_C
     M5.Lcd.println(c);
     line_count++;
     if (line_count > 10) {
