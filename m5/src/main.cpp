@@ -11,6 +11,9 @@
 #include "Grove_Motor_Driver_TB6612FNG.h"
 #include <Wire.h>
 
+#define LED_SHARE_POSITIVE
+#define RANGE_MIN   20
+#define RANGE_MAX   250
 #define SERVICE_UUID "B6935877-54BA-4F86-ABD7-09A4218799DF"
 #define CHARACTERISTIC_UUID "3CDB6EAF-EC80-4CCF-9B3E-B78EFA3B28AD"
 #define DECOUNCING_DELAY 1000
@@ -52,6 +55,17 @@ template<typename T> void println(T c) {
 }
 #   endif
 #endif
+
+uint8_t validate_lum(uint8_t value) {
+    if(value==0) value=1;
+#ifdef LED_SHARE_POSITIVE
+    value = 256-value;
+#endif
+    double fv = value;
+    // range is [RANGE_MIN, RANGE_MAX]
+    fv = fv/255.0 * (RANGE_MAX-RANGE_MIN+1) + RANGE_MIN;
+    return uint8_t(fv);
+}
 
 class MyServerCallbacks : public BLEServerCallbacks {
     void onConnect(BLEServer *pServer) override {
@@ -104,16 +118,20 @@ class LampCallbacks : public BLECharacteristicCallbacks {
 public:
     static void updateLamp() {
         if (turnedOn) {
-            if (white == 0) {
-                motor.dcMotorStop(MOTOR_CHA);
-            } else {
-                motor.dcMotorRun(MOTOR_CHA, white);
-            }
-            if (yellow == 0) {
-                motor.dcMotorStop(MOTOR_CHB);
-            } else {
-                motor.dcMotorRun(MOTOR_CHB, yellow);
-            }
+            // if (white == 0) {
+            //     motor.dcMotorStop(MOTOR_CHA);
+            // } else {
+                sprintf(buf, "W: %d, %d", white, validate_lum(white));
+                println(buf);
+                motor.dcMotorRun(MOTOR_CHA, validate_lum(white));
+            // }
+            // if (yellow == 0) {
+            //     motor.dcMotorStop(MOTOR_CHB);
+            // } else {
+                sprintf(buf, "Y: %d, %d", yellow, validate_lum(yellow));
+                println(buf);
+                motor.dcMotorRun(MOTOR_CHB, validate_lum(yellow));
+            // }
         } else {
             motor.dcMotorStop(MOTOR_CHA);
             motor.dcMotorStop(MOTOR_CHB);
