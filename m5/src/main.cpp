@@ -4,7 +4,7 @@
 #ifdef ARDUINO_M5Stick_C
 #include <M5StickC.h>
 #endif
-
+#include <Preferences.h>
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLE2902.h>
@@ -15,6 +15,8 @@
 #define CHARACTERISTIC_UUID "3CDB6EAF-EC80-4CCF-9B3E-B78EFA3B28AD"
 #define DECOUNCING_DELAY 1000
 bool deviceConnected = false;
+
+Preferences preferences;
 
 BLECharacteristic *pCharacteristicLum = nullptr;
 
@@ -92,6 +94,8 @@ class LampCallbacks : public BLECharacteristicCallbacks {
         white = value[0];
         yellow = value[1];
         turnedOn = (value[2] > 0);
+        preferences.putUChar("WHITE", white);
+        preferences.putUChar("YELLOW", yellow);
         sprintf(buf, "Values: %d, %d, %d", white, yellow, turnedOn);
         println(buf);
         updateLamp();
@@ -128,6 +132,11 @@ void turnOffLcd() {
 }
 
 void setup() {
+    preferences.begin("lamp-config");
+    delay(10);
+    white = preferences.getUChar("WHITE", 127);
+    yellow = preferences.getUChar("YELLOW", 127);
+
     Wire.begin();
 #ifndef NDEBUG
     Serial.begin(115200);
@@ -161,7 +170,13 @@ void setup() {
 }
 
 void loop() {
-    if (M5.BtnA.wasPressed() || M5.BtnB.wasPressed()) {
+    if (
+#ifdef ARDUINO_M5Stick_C
+        M5.BtnA.wasPressed() || M5.BtnB.wasPressed()
+#else
+        M5.Btn.wasPressed()
+#endif
+    ) {
         println("Button clicked.");
         turnedOn = (turnedOn == 0);
         LampCallbacks::updateLamp();
