@@ -7,7 +7,6 @@ class BLECharacteristic;
 class LampBLEService {
 public:
     void begin(Lamp *);
-    void valueChanged();
 
 private:
     Lamp *pLamp = nullptr;

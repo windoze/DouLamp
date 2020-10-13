@@ -95,14 +95,10 @@ void LampBLEService::begin(Lamp *p) {
     pAdvertising->start();
 
     p->updateCallback = []{
-        bleService.valueChanged();
+        if (bleService.pCharacteristicLum) {
+            bleService.pCharacteristicLum->notify();
+        }
     };
-}
-
-void LampBLEService::valueChanged() {
-    if (pCharacteristicLum) {
-        pCharacteristicLum->notify();
-    }
 }
 
 LampBLEService bleService;
