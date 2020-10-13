@@ -74,8 +74,7 @@ void LampWIFIService::onLoop() {
     if (client) { // If a new client connects,
         currentTime = millis();
         previousTime = currentTime;
-        IPAddress addr = client.remoteIP();
-        println("New Client connection from: ", addr[0], '.', addr[1], '.', addr[2], '.', addr[3]); // print a message out in the serial port
+        println("New Client connection from: ", client.remoteIP()); // print a message out in the serial port
         String currentLine = "";       // make a String to hold incoming data from the client
         while (client.connected() && currentTime - previousTime <= timeoutTime) { // loop while the client's connected
             currentTime = millis();
