@@ -25,8 +25,7 @@ bool deviceConnected = false;
 Preferences preferences;
 
 #include "private_ssid.h"
-// "private_ssid.h" should contain following line
-// Replace with your network credentials
+// "private_ssid.h" should contain following lines, replace them with your network credentials
 // const char *ssid = "YOUR_SSID";
 // const char *password = "YOUR_PASSWORD";
 
