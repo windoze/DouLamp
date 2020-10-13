@@ -24,9 +24,11 @@ bool deviceConnected = false;
 
 Preferences preferences;
 
+#include "private_ssid.h"
+// "private_ssid.h" should contain following line
 // Replace with your network credentials
-const char *ssid = "YOUR_SSID";
-const char *password = "YOUR_PASSWORD";
+// const char *ssid = "YOUR_SSID";
+// const char *password = "YOUR_PASSWORD";
 
 // Set web server port number to 80
 WiFiServer server(80);
