@@ -65,10 +65,13 @@ void LampWIFIService::begin(Lamp *p) {
         delay(500);
     }
     println("Connected to ", ssid);
+    println("Local IP is: ", WiFi.localIP());
     server.begin();
+    started = true;
 }
 
 void LampWIFIService::onLoop() {
+    if(!started) return;
     WiFiClient client = server.available();   // Listen for incoming clients
 
     if (client) { // If a new client connects,

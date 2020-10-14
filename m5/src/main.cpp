@@ -13,10 +13,17 @@
 #include "LampWifiService.h"
 
 void setup() {
-    Wire.begin();
     Serial.begin(115200);
+#ifdef ARDUINO_M5Atom
+    // M5Atom needs to begin M5 before Wire
+    M5.begin();
+    // Wire pins, can be found from the tag on the back of M5Atom
+    Wire.begin(26, 32);
+#else
+    Wire.begin();
     M5.begin();
     turnOffLcd();
+#endif
 
     lamp.begin();
     bleService.begin(&lamp);

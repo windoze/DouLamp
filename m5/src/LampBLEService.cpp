@@ -18,18 +18,13 @@
 
 #define SERVICE_UUID "B6935877-54BA-4F86-ABD7-09A4218799DF"
 #define CHARACTERISTIC_UUID "3CDB6EAF-EC80-4CCF-9B3E-B78EFA3B28AD"
-bool deviceConnected = false;
-
-BLECharacteristic *pCharacteristicLum = nullptr;
 
 class LampServerCallbacks : public BLEServerCallbacks {
     void onConnect(BLEServer *pServer) override {
-        deviceConnected = true;
         println("BLE connected.");
     };
 
     void onDisconnect(BLEServer *pServer) override {
-        deviceConnected = false;
         println("BLE disconnected.");
     }
 };
@@ -94,6 +89,7 @@ void LampBLEService::begin(Lamp *p) {
     pAdvertising->addServiceUUID(SERVICE_UUID);
     pAdvertising->start();
 
+    println("Begin advertising");
     p->updateCallback = []{
         if (bleService.pCharacteristicLum) {
             bleService.pCharacteristicLum->notify();

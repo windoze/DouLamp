@@ -10,6 +10,7 @@ public:
 
 private:
     Lamp * pLamp;
+    bool started = false;
 };
 
 extern LampWIFIService wifiService;
